@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "rootDir": "./src",    
+    "outDir": "./dist",
+    "removeComments": true,
+    "importsNotUsedAsValues": "remove",
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true, // aumenta a compatibilidade com o CommonJS
+    "strict": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+  }
+}

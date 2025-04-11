@@ -1,0 +1,19 @@
+{
+  "name": "formacao-ts-projeto-01",
+  "version": "1.0.0",
+  "description": "Projeto 01 - Curso Formação TS",
+  "main": "dist/app.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "prestart": "npm run build"
+  },
+  "keywords": [],
+  "author": "Luciano Baraúna",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "22.14.0",
+    "typescript": "5.8.3"
+  }
+}
