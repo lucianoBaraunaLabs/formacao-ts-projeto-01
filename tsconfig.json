@@ -7,11 +7,12 @@
     "outDir": "./dist",
     "removeComments": true,
     "importsNotUsedAsValues": "remove",
-    "downlevelIteration": true,
-    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true, // aumenta compatibilidade com tipos mais antigos
+    "allowSyntheticDefaultImports": true, // importa tudo de uma vez mesmo sem precisar usar.
     "esModuleInterop": true, // aumenta a compatibilidade com o CommonJS
-    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "skipLibCheck": true,
   }
 }
