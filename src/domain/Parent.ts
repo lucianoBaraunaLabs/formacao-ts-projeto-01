@@ -1,5 +1,5 @@
 import z from 'zod'
-import { AddressSchema } from './types.js'
+import { AddressSchema, Serializable } from './types.js'
 import { randomUUID } from 'node:crypto'
 
 const ParentCreationSchema = z.object({
@@ -14,14 +14,14 @@ const ParentCreationSchema = z.object({
 
 export type ParentCreationType = z.infer<typeof ParentCreationSchema>
 
-export class Parent {
+export class Parent implements Serializable {
     firstName: ParentCreationType['firstName'];
     surname: ParentCreationType['surname'];
     phones: ParentCreationType['phones'];
     emails: ParentCreationType['emails'];
     address: ParentCreationType['address'];
     document: ParentCreationType['document'];
-    readonly id: ParentCreationType['id'];
+    readonly id: string;
 
     constructor(data: ParentCreationType) {
         this.firstName = data.firstName;
