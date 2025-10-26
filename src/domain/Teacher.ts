@@ -41,7 +41,7 @@ export class Teacher implements Serializable {
     this.id = parsedData.id ?? randomUUID();
     }
 
-    fromObject (obj: Record<string, unknown>): Teacher {
+    static fromObject (obj: Record<string, unknown>): Teacher {
         const parsedData = TeacherCreationSchema.parse(obj);
         return new Teacher(parsedData);
     }
