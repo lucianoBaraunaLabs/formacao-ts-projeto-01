@@ -14,6 +14,10 @@ const ParentCreationSchema = z.object({
 
 export type ParentCreationType = z.infer<typeof ParentCreationSchema>
 
+export const ParentUpdateSchema = ParentCreationSchema.partial().omit({id: true});
+    
+export type ParentUpdateType = z.infer<typeof ParentUpdateSchema>;
+
 export class Parent implements Serializable {
     firstName: ParentCreationType['firstName'];
     surname: ParentCreationType['surname'];

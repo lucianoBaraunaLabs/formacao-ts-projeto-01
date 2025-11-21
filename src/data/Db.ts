@@ -60,7 +60,7 @@ export abstract class Database {
         return this.#updateFile();
     }
 
-    listById(property: string, value:any) {
+    listBy(property: string, value:any) {
         const allData = this.list();
         return allData.filter((data) => {
             let comparable = (data as any)[property] as unknown
