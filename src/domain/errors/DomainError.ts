@@ -13,7 +13,7 @@ export abstract class DomainError extends Error {
 
     constructor(message: string, entity: SerializableStatic, options?: DomainErrorOptions) {
         super(message, options)
-        this.stack = new Error().stack
+        this.stack = new Error().stack // aqui estamos capturando a stack trace correta do javascript
         this.code = options?.code ?? 'DOMAIN_ERROR'
         this.name = `${entity.name}Error`
         this.status = options?.status ?? 500
