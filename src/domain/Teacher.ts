@@ -15,7 +15,8 @@ export const TeacherCreationSchema = z.object({
 });
 
 export type TeacherCreationType = z.infer<typeof TeacherCreationSchema>;
-export const TecherUpdateSchema = TeacherCreationSchema.partial().omit({id: true});
+export const TeacherUpdateSchema = TeacherCreationSchema.partial().omit({id: true});
+export type TeacherUpdateType = z.infer<typeof TeacherUpdateSchema>;
 
 export class Teacher implements Serializable {
   firstname: TeacherCreationType['firstname'];
@@ -49,7 +50,7 @@ export class Teacher implements Serializable {
     toJSON (): string {
         return JSON.stringify(this.toObject())
     }
-    toObject (): Record<string, unknown> {
+    toObject () {
         return {
             firstname: this.firstname,
             surname: this.surname,
