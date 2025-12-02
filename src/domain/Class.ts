@@ -34,7 +34,7 @@ export class Class implements Serializable {
     toJSON (): string {
         return JSON.stringify(this.toObject())
     }
-    toObject (): Record<string, unknown> {
+    toObject () {
         return {
             id: this.id,
             teacher: this.teacher,
