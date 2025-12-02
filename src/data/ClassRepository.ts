@@ -1,8 +1,8 @@
-import { Student } from '../domain/Student.js'
+import { Class } from '../domain/Class.js'
 import { Database } from './Db.js'
 
-export class StudentRepository  extends Database {
+export class ClassRepository  extends Database {
     constructor() {
-        super(Student)
+        super(Class)
     }
 }
