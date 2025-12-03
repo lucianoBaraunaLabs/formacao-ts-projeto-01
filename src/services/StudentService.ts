@@ -1,4 +1,4 @@
-import { StudentRepository } from '../data/ClassRepository.js'
+import { ClassRepository } from '../data/ClassRepository.js'
 import { ConflictError } from '../domain/errors/Conflict.js'
 import { Parent } from '../domain/Parent.js'
 import { Student, StudentCreationType, StudentUpdateType } from '../domain/Student.js'
@@ -8,7 +8,7 @@ import { ParentService } from './ParentService.js'
 export class StudentService extends Service {
 
     // Acessando outro serviço para possíveis validações futuras
-    constructor(repository: StudentRepository, private readonly parentService: ParentService) {
+    constructor(repository: ClassRepository, private readonly parentService: ParentService) {
         super(repository)
     }
 
