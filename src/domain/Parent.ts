@@ -9,7 +9,7 @@ export const ParentCreationSchema = z.object({
     phones: z.array(z.string()).nonempty(),
     emails: z.array(z.email()).nonempty(),
     address: z.array(AddressSchema).nonempty(),
-    document: z.array(z.string()),
+    document: z.string(),
 })
 
 export type ParentCreationType = z.infer<typeof ParentCreationSchema>

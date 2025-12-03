@@ -5,7 +5,7 @@ import { randomUUID } from 'crypto'
 
 export const StudentCreationSchema = z.object({
     id: z.uuid(),
-    firstname: z.string().min(2).max(100),
+    firstName: z.string().min(2).max(100),
     surname: z.string().min(2).max(100),
     document: z.string(),
     bloodType: z.string(),
@@ -24,7 +24,7 @@ export type StudentUpdateType = z.infer<typeof StudentUpdateSchema>;
 
 
 export class Student implements Serializable {
-    firstname: StudentCreationType['firstname'];
+    firstName: StudentCreationType['firstName'];
     surname: StudentCreationType['surname'];
     document: StudentCreationType['document'];
     bloodType: StudentCreationType['bloodType'];
@@ -38,7 +38,7 @@ export class Student implements Serializable {
 
     constructor(data: StudentCreationType) {
         const parsedData = StudentCreationSchema.parse(data);
-        this.firstname = parsedData.firstname;
+        this.firstName = parsedData.firstName;
         this.surname = parsedData.surname;
         this.document = parsedData.document;
         this.bloodType = parsedData.bloodType;
@@ -69,7 +69,7 @@ export class Student implements Serializable {
     }
     toObject () {
         return {
-            firstname: this.firstname,
+            firstName: this.firstName,
             surname: this.surname,
             document: this.document,
             bloodType: this.bloodType,

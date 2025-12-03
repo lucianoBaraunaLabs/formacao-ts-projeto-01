@@ -3,7 +3,7 @@ import { Serializable } from './types.js'
 import { randomUUID } from 'crypto'
 
 export const TeacherCreationSchema = z.object({
-  firstname: z.string().min(2).max(100),
+  firstName: z.string().min(2).max(100),
   surname: z.string().min(2).max(100),
   email: z.email(),
   phone: z.string(),
@@ -19,7 +19,7 @@ export const TeacherUpdateSchema = TeacherCreationSchema.partial().omit({id: tru
 export type TeacherUpdateType = z.infer<typeof TeacherUpdateSchema>;
 
 export class Teacher implements Serializable {
-  firstname: TeacherCreationType['firstname'];
+  firstName: TeacherCreationType['firstName'];
   surname: TeacherCreationType['surname'];
   email: TeacherCreationType['email'];
   phone: TeacherCreationType['phone'];
@@ -31,7 +31,7 @@ export class Teacher implements Serializable {
 
   constructor(data: TeacherCreationType) {
     const parsedData = TeacherCreationSchema.parse(data);
-    this.firstname = parsedData.firstname;
+    this.firstName = parsedData.firstName;
     this.surname = parsedData.surname;
     this.email = parsedData.email;
     this.phone = parsedData.phone;
@@ -52,7 +52,7 @@ export class Teacher implements Serializable {
     }
     toObject () {
         return {
-            firstname: this.firstname,
+            firstName: this.firstName,
             surname: this.surname,
             email: this.email,
             phone: this.phone,
