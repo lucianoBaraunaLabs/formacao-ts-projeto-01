@@ -3,7 +3,7 @@ import { id } from 'zod/locales'
 import { Serializable } from './types.js'
 import { randomUUID } from 'crypto'
 
-const StudentCreationSchema = z.object({
+export const StudentCreationSchema = z.object({
     id: z.uuid(),
     firstname: z.string().min(2).max(100),
     surname: z.string().min(2).max(100),

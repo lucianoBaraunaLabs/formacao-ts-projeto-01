@@ -2,7 +2,7 @@ import z from 'zod'
 import { AddressSchema, Serializable } from './types.js'
 import { randomUUID } from 'node:crypto'
 
-const ParentCreationSchema = z.object({
+export const ParentCreationSchema = z.object({
     id: z.uuid().optional(),
     firstName: z.string(),
     surname: z.string(),

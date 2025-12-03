@@ -3,15 +3,16 @@ import helmet from 'helmet'
 import { Server } from 'http'
 import { ServiceList } from '../app.js'
 import { AppConfig } from '../config.js'
+import { parentRouterFactory } from './parent.js'
 export async function WebLayer(config: AppConfig, services: ServiceList) {
     const app = Express()
     let  server: Server | undefined
     app.use(helmet())
     app.use(Express.json())
-    app.use('/classes', classRouterFacory())
-    app.use('/teachers', classRouterFacory())
-    app.use('/parents', classRouterFacory())
-    app.use('/students', classRouterFacory())
+    app.use('/parents', parentRouterFactory(services.parent, services.student ))
+    // app.use('/classes', classRouterFacory())
+    // app.use('/teachers', classRouterFacory())
+    // app.use('/students', classRouterFacory())
     app.get('/ping', (_, res) => {
         res.send('pong').end()
     })

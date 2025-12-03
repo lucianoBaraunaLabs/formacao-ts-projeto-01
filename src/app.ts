@@ -44,26 +44,22 @@ async function main(layers: Application, config: AppConfig){
     const {services} = initDependencies(config)
     const {start, stop} = await layers(config, services)
 
-    process.on('SIGINT', async () => {
-        console.info('SIGINT signal received')
-        await stop()
-    })
-    
-    process.on('SIGTERM', async () => {
-        console.info('SIGTERM signal received')
-        await stop()
-    })
-    
-    process.on('unhandledRejection', (reason) => {
-        console.info('unhandledRejection signal received', reason)
-    })
-
-    process.on('uncaughtException', async (error) => {
-        console.info('uncaughtException signal received', error)
-        await stop()
-
-    })
-    
+   
+  process.on('SIGINT', () => {
+    console.info('SIGINT signal received.')
+    stop()
+  })
+  process.on('SIGTERM', () => {
+    console.info('SIGTERM signal received.')
+    stop()
+  })
+  process.on('unhandledRejection', (reason) => {
+    console.error('Unhandled rejection', reason)
+  })
+  process.on('uncaughtException', (error) => {
+    console.error('Uncaught exception', error)
+    stop()
+  })
     return start()
 }
 
