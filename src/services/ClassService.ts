@@ -70,7 +70,7 @@ export class ClassService extends Service {
         return teacher as Teacher
     }
 
-    getSTudents(classId: string) {
+    getStudents(classId: string) {
         const classEntity = this.findById(classId) as Class
 
         const students = this.studentService.listBy('class', classEntity.id)
