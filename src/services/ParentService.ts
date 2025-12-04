@@ -1,25 +1,29 @@
-import { ConflictError } from '../domain/Errors/Conflict.js'
-import { Parent, ParentCreationType, ParentUpdateType } from '../domain/Parent.js'
-import { Service } from './BaseService.js'
+import { ConflictError } from '../domain/Errors/Conflict.js';
+import {
+  Parent,
+  ParentCreationType,
+  ParentUpdateType
+} from '../domain/Parent.js';
+import { Service } from './BaseService.js';
 
-export class ParentService extends Service {
+export class ParentService extends Service<typeof Parent> {
   update(id: string, newData: ParentUpdateType) {
-    const entity = this.findById(id) as Parent // FIXME: Como melhorar?
+    const entity = this.findById(id);
     const updated = new Parent({
       ...entity.toObject(),
       ...newData
-    })
-    this.repository.save(updated)
-    return updated
+    });
+    this.repository.save(updated);
+    return updated;
   }
 
   create(creationData: ParentCreationType) {
-    const existing = this.repository.listBy('document', creationData.document)
+    const existing = this.repository.listBy('document', creationData.document);
     if (existing.length > 0) {
-      throw new ConflictError(creationData.document, Parent)
+      throw new ConflictError(creationData.document, Parent);
     }
-    const entity = new Parent(creationData)
-    this.repository.save(entity)
-    return entity
+    const entity = new Parent(creationData);
+    this.repository.save(entity);
+    return entity;
   }
 }
